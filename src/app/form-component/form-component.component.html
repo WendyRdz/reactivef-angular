@@ -1,0 +1,57 @@
+<form [formGroup]="form" novalidate (ngSubmit)="save($event)">
+  <p>
+    Name: <br/>
+    <input type="text" formControlName="name">
+  </p>
+  <p>
+    Fecha: <br/>
+    <input type="date" formControlName="date">
+  </p>
+  <button type="button" (click)="doSomething()">Action</button>
+  <!-- <p>
+    Email: <br/>
+    <input type="email" formControlName="email">
+  </p> -->
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control has-icons-left has-icon-right">
+     <input class="input" type="email" formControlName="email">
+     <span class="icon is-small is-left">
+       <i class="fas fa-at"></i>
+     </span>
+      <span class="icon is-small is-rigth">
+       <i class="fas fa-check"></i>
+     </span>
+    </div>
+    <p class="help is-success">Success Message</p>
+    <p class="help is-danger">Error Message</p>
+  </div>
+
+    <!-- <div *ngIf="emailField.errors && emailField.touched">
+    <p *ngIf="emailField.hasError('email')">No es un email</p>
+  </div> -->
+  <p>
+    Texto Largo: <br/>
+    <textarea cols="30" rows="10" formControlName="text"></textarea>
+    {{ form.get('text').value.length }}/80
+  </p>
+  <div *ngIf="textField.errors && textField.touched">
+    <p *ngIf="textField.hasError('required')">Es un campo requerido</p>
+    <p *ngIf="textField.hasError('maxLength')">Maximo deben ser 80 caracteres</p>
+  </div>
+  <p>
+    Category: <br/>
+    <select formControlName="category">
+    <option value="1">Category 1</option>
+    <option value="2">Category 2</option>
+    <option value="3">Category 3</option>
+    </select>
+  </p>
+  <p>
+    Genero: <br/>
+    <input type="radio" name="gender" formControlName="gender" value="male"> Hombre
+    <input type="radio" name="gender" formControlName="gender" value="female"> Mujer
+    <input type="radio" name="gender" formControlName="gender" value="other"> Otro
+  </p>
+  <button type="submit">Guardar</button>
+</form>
